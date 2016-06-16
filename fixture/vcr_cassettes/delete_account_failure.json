@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "delete",
+      "options": [],
+      "request_body": "",
+      "url": "https://graph.accountkit.com/v1.0/invalid?access_token=AA|kldf|dlsf&appsecret=valid_appsecret_proof"
+    },
+    "response": {
+      "body": "{\"error\":{\"message\":\"Service temporarily unavailable\",\"type\":\"EMApiException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"A4vROAvRZtP\"}}",
+      "headers": {
+        "WWW-Authenticate": "OAuth \"Facebook Platform\" \"invalid_request\" \"Service temporarily unavailable\"",
+        "Access-Control-Allow-Origin": "*",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-store",
+        "Expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+        "Content-Type": "application/json; charset=UTF-8",
+        "x-fb-trace-id": "A4vROAvRZtP",
+        "x-fb-rev": "2396855",
+        "X-FB-Debug": "Z8mFauwUiFKODKQdBkZytriPGBEDNr8XMIwwv0M0p7DQPTdkzb7g5eca3PMUIA7Zf+JJU+2z5AidsmywSR15oQ==",
+        "Date": "Thu, 16 Jun 2016 21:28:24 GMT",
+        "Connection": "keep-alive",
+        "Content-Length": "135"
+      },
+      "status_code": 500,
+      "type": "ok"
+    }
+  }
+]

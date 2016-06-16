@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://graph.accountkit.com/v1.0/access_token?grant_type=authorization_code&code=invalid&access_token=AA|invalid|invalid&appsecret=invalid"
+    },
+    "response": {
+      "body": "{\"error\":{\"message\":\"Service temporarily unavailable\",\"type\":\"EMApiException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"C4erpIHwfYY\"}}",
+      "headers": {
+        "WWW-Authenticate": "OAuth \"Facebook Platform\" \"invalid_request\" \"Service temporarily unavailable\"",
+        "Access-Control-Allow-Origin": "*",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-store",
+        "Expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+        "Content-Type": "application/json; charset=UTF-8",
+        "x-fb-trace-id": "C4erpIHwfYY",
+        "x-fb-rev": "2396855",
+        "X-FB-Debug": "UZjI06l5Hk9E2HTkleMKmO80Tcdu7BQm4XKKRRzK2QfEw506eaNHJz3/QnJtp/KM/wzVsmUbrT1x9qFhGvfbDg==",
+        "Date": "Thu, 16 Jun 2016 21:40:26 GMT",
+        "Connection": "keep-alive",
+        "Content-Length": "135"
+      },
+      "status_code": 500,
+      "type": "ok"
+    }
+  }
+]

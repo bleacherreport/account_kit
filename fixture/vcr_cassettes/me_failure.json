@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://graph.accountkit.com/v1.0/me?access_token=invalid&appsecret=valid_appsecret_proof"
+    },
+    "response": {
+      "body": "{\"error\":{\"message\":\"Invalid OAuth access token.\",\"type\":\"OAuthException\",\"code\":190,\"fbtrace_id\":\"CeRr0HW5x07\"}}",
+      "headers": {
+        "WWW-Authenticate": "OAuth \"Facebook Platform\" \"invalid_token\" \"Invalid OAuth access token.\"",
+        "Access-Control-Allow-Origin": "*",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-store",
+        "Expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+        "Content-Type": "application/json; charset=UTF-8",
+        "x-fb-trace-id": "CeRr0HW5x07",
+        "x-fb-rev": "2396855",
+        "X-FB-Debug": "Gffv4/uzXRjeqdX5gRFCusDPHCh95E6paHcG5gP+5n9cG4esAdSVuzmaFwjeEW2OhEs5zD8YuFbI0kjMV2AT3w==",
+        "Date": "Thu, 16 Jun 2016 21:46:57 GMT",
+        "Connection": "keep-alive",
+        "Content-Length": "113"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]
