@@ -33,23 +33,20 @@ defmodule AccountKit.Mixfile do
     ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [applications: [:httpoison, :poison]]
   end
 
   defp deps do
     [
-      {:credo,       "~> 0.3",  only: [:dev]},
+      {:credo,       "~> 0.4",  only: [:dev]},
       {:dialyxir,    "~> 0.3",  only: [:dev]},
-      {:earmark,     "~> 0.1",  only: [:dev]},
-      {:excoveralls, "~> 0.5",  only: [:test]},
+      {:earmark,     "~> 0.2",  only: [:dev]},
       {:ex_doc,      "~> 0.11", only: [:dev]},
-      {:exvcr,       "~> 0.7",  only: [:test]},
-      {:httpoison,   "~> 0.8"},
-      {:poison,      "~> 1.5"}
+      {:excoveralls, "~> 0.5",  only: [:test]},
+      {:exvcr,       "~> 0.8",  only: [:test]},
+      {:httpoison,   "~> 0.9.0"},
+      {:poison,      "~> 2.2.0"}
     ]
   end
 
