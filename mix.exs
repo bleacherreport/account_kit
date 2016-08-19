@@ -13,7 +13,7 @@ defmodule AccountKit.Mixfile do
       description: "Facebook Account Kit api client",
       docs: [extras: ["README.md"]],
       elixir: "~> 1.2",
-      homepage_url: "https://github.com/br/account_kit",
+      homepage_url: "https://github.com/bleacherreport/account_kit",
       name: "Account Kit",
       package: package,
       preferred_cli_env: [
@@ -26,7 +26,7 @@ defmodule AccountKit.Mixfile do
         "vcr.check": :test,
         "vcr.show": :test
       ],
-      source_url: "https://github.com/br/account_kit",
+      source_url: "https://github.com/bleacherreport/account_kit",
       start_permanent: Mix.env == :prod,
       test_coverage: [tool: ExCoveralls],
       version: "0.0.1"
@@ -53,8 +53,8 @@ defmodule AccountKit.Mixfile do
   defp package do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
-      licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/br/account_kit"},
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/bleacherreport/account_kit"},
       maintainers: ["John Kelly"]
     ]
   end
