@@ -2,13 +2,6 @@ defmodule AccountKit do
   @moduledoc """
   Facebook Account Kit
   """
-  @api_version       Application.fetch_env!(:account_kit, :api_version)
-  @app_id            Application.fetch_env!(:account_kit, :app_id)
-  @app_secret        Application.fetch_env!(:account_kit, :app_secret)
-  @client_token      Application.fetch_env!(:account_kit, :client_token)
-  @require_appsecret Application.fetch_env!(:account_kit, :require_appsecret)
-  @fqdn              "https://graph.accountkit.com/#{@api_version}"
-  @server_token      "AA|#{@app_id}|#{@app_secret}"
   @type decoded_json  :: %{String.t => (String.t | non_neg_integer)}
   @type http_response :: {:ok, decoded_json} | {:error, decoded_json}
 
@@ -22,13 +15,13 @@ defmodule AccountKit do
     query_params = [
       "grant_type=authorization_code",
       "code=#{code}",
-      "access_token=#{@server_token}",
-      appsecret_proof_param(@server_token, @require_appsecret)
+      "access_token=#{server_token()}",
+      appsecret_proof_param(server_token(), require_appsecret)
     ]
     |> Enum.reject(&(&1 == nil))
     |> Enum.join("&")
 
-    case HTTPoison.get! "#{@fqdn}/access_token?#{query_params}" do
+    case HTTPoison.get! "#{fqdn()}/access_token?#{query_params}" do
       %HTTPoison.Response{status_code: 200, body: body} ->
         {:ok, Poison.decode!(body)}
       %HTTPoison.Response{body: body} ->
@@ -43,13 +36,13 @@ defmodule AccountKit do
   @spec delete_account(String.t, String.t) :: http_response
   def delete_account(account_id, access_token) do
     query_params = [
-      "access_token=#{@server_token}",
-      appsecret_proof_param(access_token, @require_appsecret)
+      "access_token=#{server_token()}",
+      appsecret_proof_param(access_token, require_appsecret)
     ]
     |> Enum.reject(&(&1 == nil))
     |> Enum.join("&")
 
-    case HTTPoison.delete! "#{@fqdn}/#{account_id}?#{query_params}" do
+    case HTTPoison.delete! "#{fqdn()}/#{account_id}?#{query_params}" do
       %HTTPoison.Response{status_code: 200} ->
         {:ok, %{}}
       %HTTPoison.Response{body: body} ->
@@ -65,12 +58,12 @@ defmodule AccountKit do
   def me(access_token) do
     query_params = [
       "access_token=#{access_token}",
-      appsecret_proof_param(access_token, @require_appsecret)
+      appsecret_proof_param(access_token, require_appsecret)
     ]
     |> Enum.reject(&(&1 == nil))
     |> Enum.join("&")
 
-    case HTTPoison.get! "#{@fqdn}/me?#{query_params}" do
+    case HTTPoison.get! "#{fqdn()}/me?#{query_params}" do
       %HTTPoison.Response{status_code: 200, body: body} ->
         {:ok, Poison.decode!(body)}
       %HTTPoison.Response{body: body} ->
@@ -92,11 +85,21 @@ defmodule AccountKit do
     end
   end
 
+  defp api_version,       do: Application.fetch_env!(:account_kit, :api_version)
+  defp app_id,            do: Application.fetch_env!(:account_kit, :app_id)
+  defp app_secret,        do: Application.fetch_env!(:account_kit, :app_secret)
+  defp require_appsecret, do: Application.fetch_env!(:account_kit, :require_appsecret)
+  defp fqdn,              do: "https://graph.accountkit.com/#{api_version()}"
+  defp server_token,      do: "AA|#{app_id()}|#{app_secret()}"
+
   @spec appsecret_proof_param(String.t, boolean) :: (String.t | nil)
   defp appsecret_proof_param(_access_token, false), do: nil
   defp appsecret_proof_param(access_token, true) do
-    appsecret_proof = :crypto.hmac(:sha256, @app_secret, access_token)
-                      |> Base.encode16(case: :lower)
+    appsecret_proof =
+      :sha256
+      |> :crypto.hmac(app_secret(), access_token)
+      |> Base.encode16(case: :lower)
+
     "appsecret=#{appsecret_proof}"
   end
 end
