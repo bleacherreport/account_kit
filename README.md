@@ -1,4 +1,8 @@
 # Account Kit
+[![Hex pm](http://img.shields.io/hexpm/v/account_kit.svg?style=flat)](https://hex.pm/packages/account_kit)
+[![Build Status](https://travis-ci.org/bleacherreport/account_kit.svg?branch=master)](https://travis-ci.org/bleacherreport/account_kit)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/bleacherreport/plug_logger_json/blob/master/LICENSE)
+
 
 An api client for Facebook Account Kit
 
@@ -9,7 +13,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add account_kit to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:account_kit, "~> 0.0.1"}]
+          [{:account_kit, "~> 0.1.0"}]
         end
 
   2. Ensure account_kit is started before your application:
@@ -43,6 +47,9 @@ Next install a web client to test with:
 * Fill out the email or phone form to test either flow.
 * Check the chrome console for the auth code
 * You can then use the auth code with the api calls available in this client
+
+## Example API
+Coming Soon
 
 
 ## Contributing

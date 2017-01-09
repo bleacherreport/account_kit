@@ -29,7 +29,7 @@ defmodule AccountKit.Mixfile do
       source_url: "https://github.com/bleacherreport/account_kit",
       start_permanent: Mix.env == :prod,
       test_coverage: [tool: ExCoveralls],
-      version: "0.0.1"
+      version: "0.1.0"
     ]
   end
 
